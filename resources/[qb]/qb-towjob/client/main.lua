@@ -223,7 +223,7 @@ RegisterNetEvent('qb-tow:client:SpawnVehicle', function()
     QBCore.Functions.SpawnVehicle(vehicleInfo, function(veh)
         SetVehicleNumberPlateText(veh, "TOWR"..tostring(math.random(1000, 9999)))
         SetEntityHeading(veh, coords.w)
-        exports['LegacyFuel']:SetFuel(veh, 100.0)
+        exports['ps-fuel']:SetFuel(veh, 100.0)
         SetEntityAsMissionEntity(veh, true, true)
         CloseMenuFull()
         TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
@@ -412,7 +412,7 @@ end)
 RegisterNetEvent('qb-tow:client:SpawnNPCVehicle', function()
     if not VehicleSpawned then
         QBCore.Functions.SpawnVehicle(CurrentLocation.model, function(veh)
-            exports['LegacyFuel']:SetFuel(veh, 0.0)
+            exports['ps-fuel']:SetFuel(veh, 0.0)
             VehicleSpawned = true
         end, CurrentLocation, true)
     end

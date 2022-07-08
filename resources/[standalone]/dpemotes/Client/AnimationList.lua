@@ -2066,4 +2066,76 @@ DP.PropEmotes = {
        EmoteLoop = true,
        EmoteMoving = true,
    }},
+   ["stopsign"] = {"amb@world_human_janitor@male@base", "base", "Stop Sign", AnimationOptions =
+   {
+       Prop = "prop_sign_road_01a",
+       PropBone = 57005,
+       PropPlacement = {0.10, -1.0, 0.0, -90.0, -250.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["walkingmansign"] = {"amb@world_human_janitor@male@base", "base", "Walking Man Sign", AnimationOptions =
+   {
+       Prop = "prop_sign_road_05a",
+       PropBone = 57005,
+       PropPlacement = {0.10, -1.0, 0.0, -90.0, -250.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["dontblockintersectionsign"] = {"amb@world_human_janitor@male@base", "base", "Intersection Sign", AnimationOptions =
+   {
+       Prop = "prop_sign_road_03e",
+       PropBone = 57005,
+       PropPlacement = {0.10, -1.0, 0.0, -90.0, -250.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["uturnsign"] = {"amb@world_human_janitor@male@base", "base", "U Turn Sign", AnimationOptions =
+   {
+       Prop = "prop_sign_road_03m",
+       PropBone = 57005,
+       PropPlacement = {0.10, -1.0, 0.0, -90.0, -250.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["noparkingsign"] = {"amb@world_human_janitor@male@base", "base", "No Parking Sign", AnimationOptions =
+   {
+       Prop = "prop_sign_road_04a",
+       PropBone = 57005,
+       PropPlacement = {0.10, -1.0, 0.0, -90.0, -250.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["leftturnsign"] = {"amb@world_human_janitor@male@base", "base", "Left Turn Sign", AnimationOptions =
+   {
+       Prop = "prop_sign_road_05e",
+       PropBone = 57005,
+       PropPlacement = {0.10, -1.0, 0.0, -90.0, -250.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["rightturnsign"] = {"amb@world_human_janitor@male@base", "base", "Right Turn Sign", AnimationOptions =
+   {
+       Prop = "prop_sign_road_05f",
+       PropBone = 57005,
+       PropPlacement = {0.10, -1.0, 0.0, -90.0, -250.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["notrespassingsign"] = {"amb@world_human_janitor@male@base", "base", "No Trespassing Sign", AnimationOptions =
+   {
+       Prop = "prop_sign_road_restriction_10",
+       PropBone = 57005,
+       PropPlacement = {0.10, -1.0, 0.0, -90.0, -250.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+   ["yieldsign"] = {"amb@world_human_janitor@male@base", "base", "Yield Sign", AnimationOptions =
+   {
+       Prop = "prop_sign_road_02a",
+       PropBone = 57005,
+       PropPlacement = {0.10, -1.0, 0.0, -90.0, -250.0, 0.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
 }

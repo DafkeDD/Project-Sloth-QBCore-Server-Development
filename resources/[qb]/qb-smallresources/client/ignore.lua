@@ -60,27 +60,26 @@ if Config.IdleCamera then --Disable Idle Cinamatic Cam
 	DisableIdleCamera(true)
 end
 
-CreateThread(function()
+Citizen.CreateThread(function()
     while true do
         local ped = PlayerPedId()
         local weapon = GetSelectedPedWeapon(ped)
-		if weapon ~= `WEAPON_UNARMED` then
+		if weapon ~= GetHashKey("WEAPON_UNARMED") then
 			if IsPedArmed(ped, 6) then
 				DisableControlAction(1, 140, true)
 				DisableControlAction(1, 141, true)
 				DisableControlAction(1, 142, true)
 			end
 
-			if weapon == `WEAPON_FIREEXTINGUISHER` or  weapon == `WEAPON_PETROLCAN` then
+			if weapon == GetHashKey("WEAPON_FIREEXTINGUISHER")then
 				if IsPedShooting(ped) then
-					SetPedInfiniteAmmo(ped, true, `WEAPON_FIREEXTINGUISHER`)
-					SetPedInfiniteAmmo(ped, true, `WEAPON_PETROLCAN`)
+					SetPedInfiniteAmmo(ped, true, GetHashKey("WEAPON_FIREEXTINGUISHER"))
 				end
 			end
 		else
-			Wait(500)
+			Citizen.Wait(500)
 		end
-        Wait(7)
+        Citizen.Wait(7)
     end
 end)
 

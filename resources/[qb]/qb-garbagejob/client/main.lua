@@ -406,7 +406,7 @@ RegisterNetEvent('qb-garbagejob:client:RequestRoute', function()
                 garbageVehicle = veh
                 SetVehicleNumberPlateText(veh, "GARB"..tostring(math.random(1000, 9999)))
                 SetEntityHeading(veh, coords.w)
-                exports['LegacyFuel']:SetFuel(veh, 100.0)
+                exports['ps-fuel']:SetFuel(veh, 100.0)
                 SetEntityAsMissionEntity(veh, true, true)
                 TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
                 currentStop = firstStop
