@@ -29,9 +29,11 @@ CREATE TABLE IF NOT EXISTS `apartments` (
   PRIMARY KEY (`id`),
   KEY `citizenid` (`citizenid`),
   KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ps-slothdb.apartments: ~0 rows (approximately)
+INSERT INTO `apartments` (`id`, `name`, `type`, `label`, `citizenid`) VALUES
+	(1, 'apartment57975', 'apartment5', 'Fantastic Plaza 7975', 'HAY85917');
 
 -- Dumping structure for table ps-slothdb.bank_accounts
 CREATE TABLE IF NOT EXISTS `bank_accounts` (
@@ -212,6 +214,145 @@ INSERT INTO `management_funds` (`id`, `job_name`, `amount`, `type`) VALUES
 	(11, 'families', 0, 'gang'),
 	(12, 'triads', 0, 'gang');
 
+-- Dumping structure for table ps-slothdb.mdt_bolos
+CREATE TABLE IF NOT EXISTS `mdt_bolos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author` varchar(50) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `plate` varchar(50) DEFAULT NULL,
+  `owner` varchar(50) DEFAULT NULL,
+  `individual` varchar(50) DEFAULT NULL,
+  `detail` text DEFAULT NULL,
+  `tags` text DEFAULT NULL,
+  `gallery` text DEFAULT NULL,
+  `officersinvolved` text DEFAULT NULL,
+  `time` varchar(20) DEFAULT NULL,
+  `jobtype` varchar(25) NOT NULL DEFAULT 'police',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table ps-slothdb.mdt_bolos: ~0 rows (approximately)
+
+-- Dumping structure for table ps-slothdb.mdt_bulletin
+CREATE TABLE IF NOT EXISTS `mdt_bulletin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text NOT NULL,
+  `desc` text NOT NULL,
+  `author` varchar(50) NOT NULL,
+  `time` varchar(20) NOT NULL,
+  `jobtype` varchar(25) DEFAULT 'police',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table ps-slothdb.mdt_bulletin: ~0 rows (approximately)
+
+-- Dumping structure for table ps-slothdb.mdt_convictions
+CREATE TABLE IF NOT EXISTS `mdt_convictions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cid` varchar(50) DEFAULT NULL,
+  `linkedincident` int(11) NOT NULL DEFAULT 0,
+  `warrant` varchar(50) DEFAULT NULL,
+  `guilty` varchar(50) DEFAULT NULL,
+  `processed` varchar(50) DEFAULT NULL,
+  `associated` varchar(50) DEFAULT '0',
+  `charges` text DEFAULT NULL,
+  `fine` int(11) DEFAULT 0,
+  `sentence` int(11) DEFAULT 0,
+  `recfine` int(11) DEFAULT 0,
+  `recsentence` int(11) DEFAULT 0,
+  `time` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table ps-slothdb.mdt_convictions: ~0 rows (approximately)
+
+-- Dumping structure for table ps-slothdb.mdt_data
+CREATE TABLE IF NOT EXISTS `mdt_data` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cid` varchar(20) NOT NULL,
+  `information` mediumtext DEFAULT NULL,
+  `tags` text NOT NULL,
+  `gallery` text NOT NULL,
+  `jobtype` varchar(25) DEFAULT 'police',
+  `pfp` text DEFAULT NULL,
+  `fingerprint` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`cid`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table ps-slothdb.mdt_data: ~0 rows (approximately)
+
+-- Dumping structure for table ps-slothdb.mdt_impound
+CREATE TABLE IF NOT EXISTS `mdt_impound` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `vehicleid` int(11) NOT NULL,
+  `linkedreport` int(11) NOT NULL,
+  `fee` int(11) DEFAULT NULL,
+  `time` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table ps-slothdb.mdt_impound: ~0 rows (approximately)
+
+-- Dumping structure for table ps-slothdb.mdt_incidents
+CREATE TABLE IF NOT EXISTS `mdt_incidents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author` varchar(50) NOT NULL DEFAULT '',
+  `title` varchar(50) NOT NULL DEFAULT '0',
+  `details` text NOT NULL,
+  `tags` text NOT NULL,
+  `officersinvolved` text NOT NULL,
+  `civsinvolved` text NOT NULL,
+  `evidence` text NOT NULL,
+  `time` varchar(20) DEFAULT NULL,
+  `jobtype` varchar(25) NOT NULL DEFAULT 'police',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table ps-slothdb.mdt_incidents: ~0 rows (approximately)
+
+-- Dumping structure for table ps-slothdb.mdt_logs
+CREATE TABLE IF NOT EXISTS `mdt_logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` text NOT NULL,
+  `time` varchar(20) DEFAULT NULL,
+  `jobtype` varchar(25) DEFAULT 'police',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table ps-slothdb.mdt_logs: ~0 rows (approximately)
+
+-- Dumping structure for table ps-slothdb.mdt_reports
+CREATE TABLE IF NOT EXISTS `mdt_reports` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author` varchar(50) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `details` text DEFAULT NULL,
+  `tags` text DEFAULT NULL,
+  `officersinvolved` text DEFAULT NULL,
+  `civsinvolved` text DEFAULT NULL,
+  `gallery` text DEFAULT NULL,
+  `time` varchar(20) DEFAULT NULL,
+  `jobtype` varchar(25) DEFAULT 'police',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table ps-slothdb.mdt_reports: ~0 rows (approximately)
+
+-- Dumping structure for table ps-slothdb.mdt_vehicleinfo
+CREATE TABLE IF NOT EXISTS `mdt_vehicleinfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `plate` varchar(50) DEFAULT NULL,
+  `information` text NOT NULL DEFAULT '',
+  `stolen` tinyint(1) NOT NULL DEFAULT 0,
+  `code5` tinyint(1) NOT NULL DEFAULT 0,
+  `image` text NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table ps-slothdb.mdt_vehicleinfo: ~0 rows (approximately)
+
 -- Dumping structure for table ps-slothdb.objects
 CREATE TABLE IF NOT EXISTS `objects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -313,9 +454,11 @@ CREATE TABLE IF NOT EXISTS `players` (
   KEY `id` (`id`),
   KEY `last_updated` (`last_updated`),
   KEY `license` (`license`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ps-slothdb.players: ~0 rows (approximately)
+INSERT INTO `players` (`id`, `citizenid`, `cid`, `license`, `name`, `money`, `charinfo`, `job`, `gang`, `position`, `metadata`, `inventory`, `last_updated`) VALUES
+	(1, 'HAY85917', 1, 'license:a9908bf0df183ed2a69f60872b6490e665029a8a', 'MoneSuper', '{"cash":500,"crypto":0,"bank":5000}', '{"nationality":"American","phone":"1656988322","account":"US07QBCore6360555762","backstory":"placeholder backstory","gender":1,"birthdate":"1996-03-05","cid":"1","lastname":"Foster","firstname":"Jenna"}', '{"grade":{"level":0,"name":"Freelancer"},"onduty":true,"type":"none","label":"Civilian","name":"unemployed","isboss":false,"payment":10}', '{"label":"No Gang Affiliaton","name":"none","isboss":false,"grade":{"level":0,"name":"none"}}', '{"x":291.5076904296875,"y":-1078.6680908203126,"z":29.3978271484375}', '{"criminalrecord":{"hasRecord":false},"tracker":false,"phone":[],"bloodtype":"O+","thirst":96.2,"fitbit":[],"attachmentcraftingrep":0,"dealerrep":0,"commandbinds":[],"inlaststand":false,"status":[],"injail":0,"jailitems":[],"licences":{"business":false,"weapon":false,"driver":true},"inside":{"apartment":[]},"jobrep":{"trucker":0,"taxi":0,"tow":0,"hotdog":0},"fingerprint":"YJ939R55RoB7547","callsign":"NO CALLSIGN","walletid":"QB-22813701","ishandcuffed":false,"craftingrep":0,"phonedata":{"SerialNumber":90227712,"InstalledApps":[]},"isdead":false,"stress":0,"armor":0,"hunger":95.8}', '[{"slot":1,"type":"item","name":"driver_license","amount":1,"info":{"firstname":"Jenna","birthdate":"1996-03-05","lastname":"Foster","type":"Class C Driver License"}},{"slot":2,"type":"item","name":"phone","amount":1,"info":[]},{"slot":3,"type":"item","name":"id_card","amount":1,"info":{"firstname":"Jenna","birthdate":"1996-03-05","nationality":"American","gender":1,"lastname":"Foster","citizenid":"HAY85917"}}]', '2022-07-08 16:32:07');
 
 -- Dumping structure for table ps-slothdb.playerskins
 CREATE TABLE IF NOT EXISTS `playerskins` (
@@ -327,9 +470,11 @@ CREATE TABLE IF NOT EXISTS `playerskins` (
   PRIMARY KEY (`id`),
   KEY `citizenid` (`citizenid`),
   KEY `active` (`active`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ps-slothdb.playerskins: ~0 rows (approximately)
+INSERT INTO `playerskins` (`id`, `citizenid`, `model`, `skin`, `active`) VALUES
+	(1, 'HAY85917', '-1667301416', '{"eye_opening":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"accessory":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"decals":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"ear":{"defaultItem":-1,"texture":0,"item":-1,"defaultTexture":0},"shoes":{"defaultItem":1,"texture":0,"item":1,"defaultTexture":0},"eyebrown_forward":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"bag":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"chimp_bone_lowering":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"ageing":{"defaultItem":-1,"texture":0,"item":-1,"defaultTexture":0},"watch":{"defaultItem":-1,"texture":0,"item":-1,"defaultTexture":0},"hat":{"defaultItem":-1,"texture":0,"item":-1,"defaultTexture":0},"torso2":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"chimp_bone_lenght":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"cheek_1":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"nose_1":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"face2":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"neck_thikness":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"eyebrows":{"defaultItem":-1,"texture":1,"item":-1,"defaultTexture":1},"chimp_hole":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"t-shirt":{"defaultItem":1,"texture":0,"item":1,"defaultTexture":0},"beard":{"defaultItem":-1,"texture":1,"item":-1,"defaultTexture":1},"jaw_bone_width":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"makeup":{"defaultItem":-1,"texture":1,"item":-1,"defaultTexture":1},"bracelet":{"defaultItem":-1,"texture":0,"item":-1,"defaultTexture":0},"mask":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"moles":{"defaultItem":-1,"texture":0,"item":-1,"defaultTexture":0},"pants":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"face":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"jaw_bone_back_lenght":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"nose_4":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"vest":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"cheek_2":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"nose_0":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"nose_5":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"chimp_bone_width":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"lips_thickness":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"cheek_3":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"nose_3":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"facemix":{"defaultSkinMix":0.0,"defaultShapeMix":0.0,"shapeMix":0,"skinMix":0},"nose_2":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"arms":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"eye_color":{"defaultItem":-1,"texture":0,"item":-1,"defaultTexture":0},"hair":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"glass":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"eyebrown_high":{"defaultItem":0,"texture":0,"item":0,"defaultTexture":0},"lipstick":{"defaultItem":-1,"texture":1,"item":-1,"defaultTexture":1},"blush":{"defaultItem":-1,"texture":1,"item":-1,"defaultTexture":1}}', 1);
 
 -- Dumping structure for table ps-slothdb.player_contacts
 CREATE TABLE IF NOT EXISTS `player_contacts` (
