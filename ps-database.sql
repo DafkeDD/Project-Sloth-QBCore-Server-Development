@@ -212,6 +212,19 @@ INSERT INTO `management_funds` (`id`, `job_name`, `amount`, `type`) VALUES
 	(11, 'families', 0, 'gang'),
 	(12, 'triads', 0, 'gang');
 
+-- Dumping structure for table ps-slothdb.objects
+CREATE TABLE IF NOT EXISTS `objects` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `model` varchar(50) NOT NULL,
+  `coords` varchar(255) NOT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `options` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`options`)),
+  `name` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table ps-slothdb.objects: ~0 rows (approximately)
+
 -- Dumping structure for table ps-slothdb.occasion_vehicles
 CREATE TABLE IF NOT EXISTS `occasion_vehicles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
