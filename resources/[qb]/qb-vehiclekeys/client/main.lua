@@ -344,7 +344,7 @@ RegisterNetEvent('vehiclekeys:client:SetOwner', function(plate)
     if VehPlate == nil then
         VehPlate = CurrentVehPlate
     end
-    TriggerServerEvent('vehiclekeys:server:SetVehicleOwner', VehPlate)
+    TriggerServerEvent('vehiclekeys:server:SetOwner', VehPlate)
     if IsPedInAnyVehicle(PlayerPedId()) and plate == CurrentVehPlate then
         SetVehicleEngineOn(GetVehiclePedIsIn(PlayerPedId(), true), true, false, true)
     end
