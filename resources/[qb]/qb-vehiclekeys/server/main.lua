@@ -19,7 +19,7 @@ end
 
 -- Events
 
-RegisterNetEvent('vehiclekeys:server:SetVehicleOwner', function(plate)
+RegisterNetEvent('vehiclekeys:server:SetOwner', function(plate)
     if plate then
         local src = source
         local Player = QBCore.Functions.GetPlayer(src)
@@ -45,7 +45,7 @@ RegisterNetEvent('vehiclekeys:server:SetVehicleOwner', function(plate)
             VehicleList[plate].owners[Player.PlayerData.citizenid] = true
         end
     else
-        print('vehiclekeys:server:SetVehicleOwner - plate argument is nil')
+        print('vehiclekeys:server:SetOwner - plate argument is nil')
     end
 end)
 
