@@ -5,17 +5,17 @@ const { ref } = Vue
 const load = Vue.createApp({
   setup () {
     return {
-      CarouselText1: 'You can add/remove items, vehicles, jobs & gangs through the shared folder.',
-      CarouselSubText1: 'Photo captured by: Markyoo#8068',
-      CarouselText2: 'Adding additional player data can be achieved by modifying the qb-core player.lua file.',
-      CarouselSubText2: 'Photo captured by: ihyajb#9723',
-      CarouselText3: 'All server-specific adjustments can be made in the config.lua files throughout the build.',
-      CarouselSubText3: 'Photo captured by: FLAPZ[INACTIV]#9925',
-      CarouselText4: 'For additional support please join our community at discord.gg/qbcore',
-      CarouselSubText4: 'Photo captured by: Robinerino#1312',
+    //   CarouselText1: 'You can add/remove items, vehicles, jobs & gangs through the shared folder.',
+    //   CarouselSubText1: 'Photo captured by: Markyoo#8068',
+    //   CarouselText2: 'Adding additional player data can be achieved by modifying the qb-core player.lua file.',
+    //   CarouselSubText2: 'Photo captured by: ihyajb#9723',
+    //   CarouselText3: 'All server-specific adjustments can be made in the config.lua files throughout the build.',
+    //   CarouselSubText3: 'Photo captured by: FLAPZ[INACTIV]#9925',
+    //   CarouselText4: 'For additional support please join our community at discord.gg/qbcore',
+    //   CarouselSubText4: 'Photo captured by: Robinerino#1312',
 
-      DownloadTitle: 'Downloading QBCore Server',
-      DownloadDesc: "Hold tight while we begin downloading all the resources/assets required to play on QBCore Server. \n\nAfter download has been finished successfully, you'll be placed into the server and this screen will disappear. Please don't leave or turn off your PC. ",
+      DownloadTitle: 'Downloading Assets',
+      DownloadDesc: "Hold tight while we begin downloading all the resources/assets required to play on. \n\nAfter download has been finished successfully, you'll be placed into the server and this screen will disappear. Please don't leave or turn off your PC. ",
 
       SettingsTitle: 'Settings',
       AudioTrackDesc1: 'When disabled the current audio-track playing will be stopped.',

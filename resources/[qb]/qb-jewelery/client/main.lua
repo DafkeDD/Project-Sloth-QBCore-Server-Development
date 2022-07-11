@@ -98,6 +98,7 @@ local function smashVitrine(k)
                     loadParticle()
                     StartParticleFxLoopedAtCoord("scr_jewel_cab_smash", plyCoords.x, plyCoords.y, plyCoords.z, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
                     Wait(2500)
+                    exports['ps-dispatch']:VangelicoRobbery(camId)
                 end
             end)
         else

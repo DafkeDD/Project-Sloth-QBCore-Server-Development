@@ -62,7 +62,11 @@ svg.menu.outer {
 }
 
 svg.menu > g > path {
-    fill: rgb(23 23 23 / 80%);
+  fill: rgb(0 0 0 / 73%);
+  stroke: #2ee0f3ad;
+  stroke-width: 1px;
+  stroke-linejoin: round;
+
 }
 
 svg.menu > g.sector > path {
@@ -81,12 +85,12 @@ svg.menu > g.sector > use {
 }
 
 svg.menu > g.sector:hover > path {
-    fill: #dc143c;
+    fill: #191818cf;
 
 }
 
 svg.menu > g.center:hover > circle {
-    fill:#dc143c;
+    fill: rgb(0 0 0 / 55%);
 }
 
 svg.menu > g.center > circle {

@@ -316,6 +316,7 @@ end
 
 RegisterNUICallback('callcops', function(_, cb)
     TriggerEvent("police:SetCopAlert")
+    exports['ps-dispatch']:StoreRobbery(camId)
     cb('ok')
 end)
 
