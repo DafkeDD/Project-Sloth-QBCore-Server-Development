@@ -21,9 +21,6 @@
 
             <q-carousel animated v-model="firstslide" :autoplay="secondap" ref="carousel" infinite>
                 <q-carousel-slide :name="1" img-src="/assets/images/1.png"></q-carousel-slide>
-                <q-carousel-slide :name="2" img-src="/assets/images/2.png"></q-carousel-slide>
-                <q-carousel-slide :name="3" img-src="/assets/images/3.png"></q-carousel-slide>
-                <q-carousel-slide :name="4" img-src="/assets/images/4.png"></q-carousel-slide>
             </q-carousel>
 
             <!-- This is where you want to replace with your video -->
@@ -41,8 +38,8 @@
                 <q-card flat style="width: auto; background: transparent;">
                     <q-card-section class="row items-center no-wrap">
                         <q-carousel animated infinite :autoplay="secondap" v-model="secondslide" transition-next="fade" transition-prev="fade" class="bg-transparent text-white">
-                            <q-carousel-slide name="1" class="column no-wrap flex-center">
-                                <div style="width: 30vw; white-space: pre-wrap;" class="text-left text-h6">
+                            <!-- q-carousel-slide name="1" class="column no-wrap flex-center">
+                                <<div style="width: 30vw; white-space: pre-wrap;" class="text-left text-h6">
                                     {{ CarouselText1 }}
                                 </div>
                                 <div style="opacity: 0.9; width: 30vw; white-space: pre-wrap;" class="text-left text-body1">
@@ -71,8 +68,8 @@
                                 </div>
                                 <div style="opacity: 0.9; width: 30vw; white-space: pre-wrap;" class="text-left text-body1">
                                     {{ CarouselSubText4 }}
-                                </div>
-                            </q-carousel-slide>
+                                </div> 
+                            </q-carousel-slide> -->
                         </q-carousel>
                         <q-space></q-space>
                         <q-carousel animated style="width: 28vw;" infinite :autoplay="thirdap" v-model="thirdslide" transition-next="fade" transition-prev="fade" control-color="white" arrows padding class="bg-transparent text-white">
@@ -183,7 +180,7 @@
 
                         <!-- This is where you want to replace with your logo -->
 
-                        <img class="cursor-none brand-logo" src="/assets/branding/qbcore.svg"></img>
+                        <!--img class="cursor-none brand-logo" src="/assets/branding/qbcore.svg"></img-->
                         <q-space></q-space>
                         <q-btn :ripple="false" flat size="xl" icon="downloading" color="white" @click="download = true"></q-btn>
                         <div class="loadingbar">

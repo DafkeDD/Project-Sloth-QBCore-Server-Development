@@ -1386,6 +1386,7 @@ RegisterNetEvent('qb-houses:client:ResetHouse', function()
             TriggerServerEvent('qb-houses:server:lockHouse', true, ClosestHouse)
             RamsDone = 0
             QBCore.Functions.Notify(Lang:t("success.lock_invasion"), 'success')
+            exports['ps-dispatch']:HouseRobbery()
         else
             QBCore.Functions.Notify(Lang:t("error.no_invasion"), 'error')
         end
