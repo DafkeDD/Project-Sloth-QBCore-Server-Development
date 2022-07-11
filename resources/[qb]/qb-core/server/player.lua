@@ -341,13 +341,26 @@ function QBCore.Player.CreatePlayer(PlayerData, Offline)
         return self.PlayerData.money[moneytype]
     end
 
-    function self.Functions.AddItem(item, amount, slot, info)
+    function self.Functions.AddItem(item, amount, slot, info,created)
         local totalWeight = QBCore.Player.GetTotalWeight(self.PlayerData.items)
         local itemInfo = QBCore.Shared.Items[item:lower()]
+
+        local time = os.time()
+        if not created then 
+            itemInfo['created'] = time
+        else 
+            itemInfo['created'] = created
+        end
+        -- itemInfo['created'] = time
+        if itemInfo["type"] == 'item' and info == nil then
+            info = { quality = 100 }
+        end
+
         if not itemInfo and not self.Offline then
             TriggerClientEvent('QBCore:Notify', self.PlayerData.source, Lang:t('error.item_not_exist'), 'error')
             return
         end
+
         amount = tonumber(amount)
         slot = tonumber(slot) or QBCore.Player.GetFirstSlotByItem(self.PlayerData.items, item)
         if itemInfo['type'] == 'weapon' and not info then
@@ -356,28 +369,50 @@ function QBCore.Player.CreatePlayer(PlayerData, Offline)
             }
         end
         if (totalWeight + (itemInfo['weight'] * amount)) <= QBCore.Config.Player.MaxWeight then
-            if (slot and self.PlayerData.items[slot]) and (self.PlayerData.items[slot].name:lower() == item:lower()) and (itemInfo['type'] == 'item' and not itemInfo['unique']) then
-                self.PlayerData.items[slot].amount = self.PlayerData.items[slot].amount + amount
 
-                if not self.Offline then
-                    self.Functions.UpdatePlayerData()
-                    TriggerEvent('qb-log:server:CreateLog', 'playerinventory', 'AddItem', 'green', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** got item: [slot:' .. slot .. '], itemname: ' .. self.PlayerData.items[slot].name .. ', added amount: ' .. amount .. ', new total amount: ' .. self.PlayerData.items[slot].amount)
+
+            if (slot and self.PlayerData.items[slot]) and (self.PlayerData.items[slot].name:lower() == item:lower()) and (itemInfo['type'] == 'item' and not itemInfo['unique'])  then
+            
+                if info.quality == self.PlayerData.items[slot].info.quality  or self.PlayerData.items[slot].info.quality >= 99 then
+
+                    self.PlayerData.items[slot].amount = self.PlayerData.items[slot].amount + amount        
+                    if not self.Offline then
+                        self.Functions.UpdatePlayerData()
+                        TriggerEvent('qb-log:server:CreateLog', 'playerinventory', 'AddItem', 'green', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** got item: [slot:' .. slot .. '], itemname: ' .. self.PlayerData.items[slot].name .. ', added amount: ' .. amount .. ', new total amount: ' .. self.PlayerData.items[slot].amount)
+                    end         
+                    return true
+
+                else
+                    slot = nil
+                    for i = 1, QBConfig.Player.MaxInvSlots, 1 do
+                        if self.PlayerData.items[i] == nil then
+                            self.PlayerData.items[i] = { name = itemInfo['name'], amount = amount, info = info or '', label = itemInfo['label'], description = itemInfo['description'] or '', weight = itemInfo['weight'], type = itemInfo['type'], unique = itemInfo['unique'], useable = itemInfo['useable'], image = itemInfo['image'], shouldClose = itemInfo['shouldClose'], slot = i, combinable = itemInfo['combinable'], created = itemInfo['created'] }
+    
+                            if not self.Offline then
+                                self.Functions.UpdatePlayerData()
+                                TriggerEvent('qb-log:server:CreateLog', 'playerinventory', 'AddItem', 'green', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** got item: [slot:' .. i .. '], itemname: ' .. self.PlayerData.items[i].name .. ', added amount: ' .. amount .. ', new total amount: ' .. self.PlayerData.items[i].amount)
+                            end
+    
+                            return true
+                        end
+                    end
+
                 end
 
-                return true
             elseif not itemInfo['unique'] and slot or slot and self.PlayerData.items[slot] == nil then
-                self.PlayerData.items[slot] = { name = itemInfo['name'], amount = amount, info = info or '', label = itemInfo['label'], description = itemInfo['description'] or '', weight = itemInfo['weight'], type = itemInfo['type'], unique = itemInfo['unique'], useable = itemInfo['useable'], image = itemInfo['image'], shouldClose = itemInfo['shouldClose'], slot = slot, combinable = itemInfo['combinable'] }
+                    self.PlayerData.items[slot] = { name = itemInfo['name'], amount = amount, info = info or '', label = itemInfo['label'], description = itemInfo['description'] or '', weight = itemInfo['weight'], type = itemInfo['type'], unique = itemInfo['unique'], useable = itemInfo['useable'], image = itemInfo['image'], shouldClose = itemInfo['shouldClose'], slot = slot, combinable = itemInfo['combinable'] ,created = itemInfo['created']}
+    
+                    if not self.Offline then
+                        self.Functions.UpdatePlayerData()
+                        TriggerEvent('qb-log:server:CreateLog', 'playerinventory', 'AddItem', 'green', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** got item: [slot:' .. slot .. '], itemname: ' .. self.PlayerData.items[slot].name .. ', added amount: ' .. amount .. ', new total amount: ' .. self.PlayerData.items[slot].amount)
+                    end
+    
+                    return true
 
-                if not self.Offline then
-                    self.Functions.UpdatePlayerData()
-                    TriggerEvent('qb-log:server:CreateLog', 'playerinventory', 'AddItem', 'green', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** got item: [slot:' .. slot .. '], itemname: ' .. self.PlayerData.items[slot].name .. ', added amount: ' .. amount .. ', new total amount: ' .. self.PlayerData.items[slot].amount)
-                end
-
-                return true
             elseif itemInfo['unique'] or (not slot or slot == nil) or itemInfo['type'] == 'weapon' then
                 for i = 1, QBConfig.Player.MaxInvSlots, 1 do
                     if self.PlayerData.items[i] == nil then
-                        self.PlayerData.items[i] = { name = itemInfo['name'], amount = amount, info = info or '', label = itemInfo['label'], description = itemInfo['description'] or '', weight = itemInfo['weight'], type = itemInfo['type'], unique = itemInfo['unique'], useable = itemInfo['useable'], image = itemInfo['image'], shouldClose = itemInfo['shouldClose'], slot = i, combinable = itemInfo['combinable'] }
+                        self.PlayerData.items[i] = { name = itemInfo['name'], amount = amount, info = info or '', label = itemInfo['label'], description = itemInfo['description'] or '', weight = itemInfo['weight'], type = itemInfo['type'], unique = itemInfo['unique'], useable = itemInfo['useable'], image = itemInfo['image'], shouldClose = itemInfo['shouldClose'], slot = i, combinable = itemInfo['combinable'], created = itemInfo['created'] }
 
                         if not self.Offline then
                             self.Functions.UpdatePlayerData()
@@ -623,7 +658,7 @@ end
 
 function QBCore.Player.LoadInventory(PlayerData)
     PlayerData.items = {}
-    local inventory = MySQL.prepare.await('SELECT inventory FROM players WHERE citizenid = ?', { PlayerData.citizenid })
+    local inventory = MySQL.Sync.prepare('SELECT inventory FROM players WHERE citizenid = ?', { PlayerData.citizenid })
     local missingItems = {}
     if inventory then
         inventory = json.decode(inventory)
@@ -645,7 +680,8 @@ function QBCore.Player.LoadInventory(PlayerData)
                             image = itemInfo['image'],
                             shouldClose = itemInfo['shouldClose'],
                             slot = item.slot,
-                            combinable = itemInfo['combinable']
+                            combinable = itemInfo['combinable'],
+                            created = item.created,
                         }
                     else
                         missingItems[#missingItems+1] = item.name:lower()
@@ -676,12 +712,13 @@ function QBCore.Player.SaveInventory(source)
                     info = item.info,
                     type = item.type,
                     slot = slot,
+                    created = item.created
                 }
             end
         end
-        MySQL.prepare('UPDATE players SET inventory = ? WHERE citizenid = ?', { json.encode(ItemsJson), PlayerData.citizenid })
+        MySQL.Async.prepare('UPDATE players SET inventory = ? WHERE citizenid = ?', { json.encode(ItemsJson), PlayerData.citizenid })
     else
-        MySQL.prepare('UPDATE players SET inventory = ? WHERE citizenid = ?', { '[]', PlayerData.citizenid })
+        MySQL.Async.prepare('UPDATE players SET inventory = ? WHERE citizenid = ?', { '[]', PlayerData.citizenid })
     end
 end
 
@@ -697,6 +734,7 @@ function QBCore.Player.SaveOfflineInventory(PlayerData)
                     info = item.info,
                     type = item.type,
                     slot = slot,
+                    created = item.created
                 }
             end
         end

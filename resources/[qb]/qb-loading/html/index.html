@@ -12,18 +12,17 @@
     </head>
     <!-- This is where you want to replace with your audio -->
 
-    <audio autoplay loop id="audio" src="/assets/audio/noncopyright.mp3"></audio>
+    <audio autoplay loop id="audio" src="../assets/audio/noncopyright.mp3"></audio>
 
     <body>
         <div id="loading-main" style="min-height: auto;">
 
             <!-- Uncomment q-parallax and comment out q-carousel if you want to use a video background instead -->
 
-            <q-carousel animated v-model="firstslide" :autoplay="secondap" ref="carousel" infinite>
-                <q-carousel-slide :name="1" img-src="/assets/images/1.png"></q-carousel-slide>
-                <q-carousel-slide :name="2" img-src="/assets/images/2.png"></q-carousel-slide>
-                <q-carousel-slide :name="3" img-src="/assets/images/3.png"></q-carousel-slide>
-                <q-carousel-slide :name="4" img-src="/assets/images/4.png"></q-carousel-slide>
+            <q-carousel animated v-model="firstslide" :autoplay="secondap" ref="carousel">
+                <q-carousel-slide :name="1" img-src="../assets/images/1.png"></q-carousel-slide>
+        
+
             </q-carousel>
 
             <!-- This is where you want to replace with your video -->
@@ -81,43 +80,43 @@
                                     {{ KeybindTitle }}
                                 </div>
                                 <div class="q-mt-md text-center">
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="/assets/keybinds/TAB.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="../assets/keybinds/TAB.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind1 }}
                                         </div>
                                     </q-btn>
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="/assets/keybinds/Tilde.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="../assets/keybinds/Tilde.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind2 }}
                                         </div>
                                     </q-btn>
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="/assets/keybinds/M.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="../assets/keybinds/M.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind3 }}
                                         </div>
                                     </q-btn>
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="/assets/keybinds/B.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="../assets/keybinds/B.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind4 }}
                                         </div>
                                     </q-btn>
                                     <br>
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="/assets/keybinds/LALT.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="../assets/keybinds/LALT.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind5 }}
                                         </div>
                                     </q-btn>
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="/assets/keybinds/F1.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="../assets/keybinds/F1.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind6 }}
                                         </div>
                                     </q-btn>
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="/assets/keybinds/I.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="../assets/keybinds/I.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind7 }}
                                         </div>
                                     </q-btn>
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="/assets/keybinds/LALT.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="../assets/keybinds/LALT.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind8 }}
                                         </div>
@@ -129,43 +128,43 @@
                                     {{ KeybindTitle }}
                                 </div>
                                 <div class="q-mt-md text-center">
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="/assets/keybinds/L.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="../assets/keybinds/L.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind10 }}
                                         </div>
                                     </q-btn>
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="/assets/keybinds/G.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="../assets/keybinds/G.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind11 }}
                                         </div>
                                     </q-btn>
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="/assets/keybinds/B.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img src="../assets/keybinds/B.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind12 }}
                                         </div>
                                     </q-btn>
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="/assets/keybinds/HOME.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="../assets/keybinds/HOME.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind9 }}
                                         </div>
                                     </q-btn>
                                     <br>
-                                        <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="/assets/keybinds/Z.svg"></q-avatar>
+                                        <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="../assets/keybinds/Z.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind13 }}
                                         </div>
                                     </q-btn>
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="/assets/keybinds/X.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="../assets/keybinds/X.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind14 }}
                                         </div>
                                     </q-btn>
-                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="/assets/keybinds/NUM.svg"></q-avatar>
+                                    <q-btn :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="../assets/keybinds/NUM.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind15 }}
                                         </div>
                                     </q-btn>
-                                    <q-btn active-class="remove-active" :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="/assets/keybinds/Y.svg"></q-avatar>
+                                    <q-btn active-class="remove-active" :ripple="false" flat stack><q-avatar square size="33px"><img style="width: 60px!important;" src="../assets/keybinds/Y.svg"></q-avatar>
                                         <div style="font-size: 10px;">
                                             {{ Keybind16 }}
                                         </div>
@@ -183,7 +182,7 @@
 
                         <!-- This is where you want to replace with your logo -->
 
-                        <img class="cursor-none brand-logo" src="/assets/branding/qbcore.svg"></img>
+                        <img class="cursor-none brand-logo" src="../assets/branding/qbcore.svg"></img>
                         <q-space></q-space>
                         <q-btn :ripple="false" flat size="xl" icon="downloading" color="white" @click="download = true"></q-btn>
                         <div class="loadingbar">
